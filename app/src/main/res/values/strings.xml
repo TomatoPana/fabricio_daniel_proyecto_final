@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fabricio_Daniel_Proyecto_Final</string>
+    <string name="page_title">Main Title</string>
+    <string name="more">More</string>
+    <string name="content_description_more">More button</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fab_content_desc">Add item</string>
+</resources>
