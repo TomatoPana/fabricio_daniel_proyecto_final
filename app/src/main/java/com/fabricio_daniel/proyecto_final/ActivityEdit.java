@@ -135,7 +135,7 @@ public class ActivityEdit extends AppCompatActivity {
             updateDato.setApellido_materno(editText3.getText().toString());
             updateDato.setPeliculas_id(Integer.parseInt(editText4.getText().toString()));
 
-            database.updateDirector(dato);
+            database.updateDirector(updateDato);
 
             Toast.makeText(this, "Elemento editado correctamente", Toast.LENGTH_LONG).show();
 

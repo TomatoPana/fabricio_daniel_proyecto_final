@@ -123,7 +123,7 @@ public class EmpleadosDB {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
 
-                String SQL = "UPDATE Empleados SET nomina = ?, nombre = ?, apellido_paterno = ?, apellido_materno = ?, domicilio = ?, telefono = ? WHERE id = ?";
+                String SQL = "UPDATE Empleados SET nomina = ?, nombre = ?, apellido_paterno = ?, apellido_materno = ?, horario = ?, telefono = ? WHERE id = ?";
 
                 PreparedStatement sentencia = conexion.prepareStatement(SQL);
                 sentencia.setString(1, dato.getNomina());
