@@ -4,32 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/more"
-        android:title="@string/more"
+        android:title="Clientes"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
     <item
         android:id="@+id/more2"
-        android:title="@string/more"
+        android:title="Directores"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
     <item
         android:id="@+id/more3"
-        android:title="@string/more"
+        android:title="Distribuidores"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
     <item
         android:id="@+id/more4"
-        android:title="@string/more"
+        android:title="Empleados"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
     <item
         android:id="@+id/more5"
-        android:title="@string/more"
+        android:title="Peliculas"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
     <item
         android:id="@+id/more6"
-        android:title="@string/more"
+        android:title="Prestamos"
         android:contentDescription="@string/content_description_more"
         app:showAsAction="never" />
 

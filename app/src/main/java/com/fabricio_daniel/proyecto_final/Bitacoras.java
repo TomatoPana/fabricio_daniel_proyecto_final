@@ -48,11 +48,11 @@ public class Bitacoras {
         this.Prestamos_id = Prestamos_id;
     }
 
-    public Date getfecha_fecha_bitacora() {
+    public Date getFecha_bitacora() {
         return fecha_bitacora;
     }
 
-    public void setfecha_bitacora(Date fecha_bitacora) {
+    public void setFecha_bitacora(Date fecha_bitacora) {
         this.fecha_bitacora = fecha_bitacora;
     }
 }

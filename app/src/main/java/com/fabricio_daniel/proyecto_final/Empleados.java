@@ -69,11 +69,11 @@ public class Empleados {
         this.apellido_materno = apellido_materno;
     }
 
-    public String gethorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void sethorario(String horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

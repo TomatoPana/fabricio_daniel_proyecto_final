@@ -28,27 +28,27 @@ public class Peliculas {
         this.id = id;
     }
 
-    public String getfecha_publicacion() {
+    public String getFecha_publicacion() {
         return fecha_publicacion;
     }
 
-    public void setfecha_publicacion(String fecha_publicacion) {
+    public void setFecha_publicacion(String fecha_publicacion) {
         this.fecha_publicacion = fecha_publicacion;
     }
 
-    public String getcodigo_pelicula() {
+    public String getCodigo_pelicula() {
         return codigo_pelicula;
     }
 
-    public void setcodigo_pelicula(String codigo_pelicula) {
+    public void setCodigo_pelicula(String codigo_pelicula) {
         this.codigo_pelicula = codigo_pelicula;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

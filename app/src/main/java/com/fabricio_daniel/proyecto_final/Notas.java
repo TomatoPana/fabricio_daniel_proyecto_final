@@ -51,19 +51,19 @@ public class Notas {
         this.Empleados_id = Empleados_id;
     }
 
-    public double getmonto() {
+    public double getMonto() {
         return monto;
     }
 
-    public void setmonto(double monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 
-    public Date getfecha_fecha_expedicion() {
+    public Date getFecha_expedicion() {
         return fecha_expedicion;
     }
 
-    public void setfecha_expedicion(Date fecha_expedicion) {
+    public void setFecha_expedicion(Date fecha_expedicion) {
         this.fecha_expedicion = fecha_expedicion;
     }
 }

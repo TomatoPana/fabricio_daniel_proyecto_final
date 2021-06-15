@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ClientesDB {
-    public ArrayList<Clientes> getClientes() {
-        ArrayList<Clientes> datos = new ArrayList<>();
+public class BitacorasDB {
+    public ArrayList<Bitacoras> getBitacoras() {
+        ArrayList<Bitacoras> datos = new ArrayList<>();
 
         Runnable task = () -> {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
                 Statement sentencia = conexion.createStatement();
-                ResultSet resultado = sentencia.executeQuery("SELECT * FROM Clientes");
-                Clientes elemento;
+                ResultSet resultado = sentencia.executeQuery("SELECT * FROM Bitacoras");
+                Bitacoras elemento;
 
                 while(resultado.next()){
-                    elemento = new Clientes(resultado.getInt("id"), resultado.getString("nombre"), resultado.getString("apellido_paterno"), resultado.getString("apellido_materno"), resultado.getString("domicilio"), resultado.getString("telefono"));
+                    elemento = new Bitacoras(resultado.getInt("id"), resultado.getInt("Empleados_id"), resultado.getInt("Prestamos_id"), resultado.getDate("fecha_bitacora"));
                     datos.add(elemento);
                 }
 
@@ -36,8 +36,8 @@ public class ClientesDB {
         return datos;
     }
 
-    public Clientes getCliente(int id){
-        Clientes dato = new Clientes();
+    public Bitacoras getBitacora(int id){
+        Bitacoras dato = new Bitacoras();
 
         Runnable task = () -> {
             try {
@@ -45,15 +45,13 @@ public class ClientesDB {
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
 
                 Statement sentencia = conexion.createStatement();
-                ResultSet resultado = sentencia.executeQuery("SELECT * FROM Clientes WHERE id = " + id);
+                ResultSet resultado = sentencia.executeQuery("SELECT * FROM Bitacoras WHERE id = " + id);
 
                 if(resultado.next()){
                     dato.setId(resultado.getInt("id"));
-                    dato.setNombre(resultado.getString("nombre"));
-                    dato.setApellido_paterno(resultado.getString("apellido_paterno"));
-                    dato.setApellido_materno(resultado.getString("apellido_materno"));
-                    dato.setDomicilio(resultado.getString("domicilio"));
-                    dato.setTelefono(resultado.getString("telefono"));
+                    dato.setEmpleados_id(resultado.getInt("Empleados_id"));
+                    dato.setPrestamos_id(resultado.getInt("Prestamos_id"));
+                    dato.setFecha_bitacora(resultado.getDate("fecha_bitacora"));
                 } else {
                     throw new Exception();
                 }
@@ -73,7 +71,7 @@ public class ClientesDB {
         return dato;
     }
 
-    public boolean insertCliente(Clientes dato){
+    public boolean insertBitacora(Bitacoras dato){
         AtomicBoolean resultado = new AtomicBoolean(false);
 
         Runnable task = () -> {
@@ -81,15 +79,13 @@ public class ClientesDB {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
 
-                String SQL = "INSERT INTO Clientes (nombre, apellido_paterno, apellido_materno, domicilio, telefono) VALUES (?,?,?,?,?)";
+                String SQL = "INSERT INTO Bitacoras (Empleados_id, Prestamos_id, fecha_bitacora) VALUES (?,?,?)";
 
                 PreparedStatement sentencia = conexion.prepareStatement(SQL);
 
-                sentencia.setString(1, dato.getNombre());
-                sentencia.setString(2, dato.getApellido_paterno());
-                sentencia.setString(3, dato.getApellido_materno());
-                sentencia.setString(4, dato.getDomicilio());
-                sentencia.setString(5, dato.getTelefono());
+                sentencia.setInt(1, dato.getEmpleados_id());
+                sentencia.setInt(2, dato.getPrestamos_id());
+                sentencia.setDate(3, (Date) dato.getFecha_bitacora());
 
                 sentencia.execute();
 
@@ -112,7 +108,7 @@ public class ClientesDB {
         return resultado.get();
     }
 
-    public boolean updateCliente(Clientes dato) {
+    public boolean updateBitacora(Bitacoras dato) {
         AtomicBoolean resultado = new AtomicBoolean(false);
 
         Runnable task = () -> {
@@ -121,15 +117,13 @@ public class ClientesDB {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
 
-                String SQL = "UPDATE Clientes SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, domicilio = ?, telefono = ? WHERE id = ?";
+                String SQL = "UPDATE Bitacoras SET Empleados_id = ?, Prestamos_id = ?, fecha_bitacora = ? WHERE id = ?";
 
                 PreparedStatement sentencia = conexion.prepareStatement(SQL);
-                sentencia.setString(1, dato.getNombre());
-                sentencia.setString(2, dato.getApellido_paterno());
-                sentencia.setString(3, dato.getApellido_materno());
-                sentencia.setString(4, dato.getDomicilio());
-                sentencia.setString(5, dato.getTelefono());
-                sentencia.setInt(6, dato.getId());
+                sentencia.setInt(1, dato.getEmpleados_id());
+                sentencia.setInt(2, dato.getPrestamos_id());
+                sentencia.setDate(3, (Date) dato.getFecha_bitacora());
+                sentencia.setInt(4, dato.getId());
 
                 sentencia.execute();
 
@@ -152,7 +146,7 @@ public class ClientesDB {
         return resultado.get();
     }
 
-    public boolean deleteCliente(int id) {
+    public boolean deleteBitacora(int id) {
         AtomicBoolean resultado = new AtomicBoolean(false);
 
         Runnable task = () -> {
@@ -162,7 +156,7 @@ public class ClientesDB {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conexion = DriverManager.getConnection("jdbc:mysql://un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/tymc1seyb6a1mjkb","wikhbsxf5v36qk6m","sqg74tjjn2xcdr3s");
 
-                String SQL = "DELETE FROM Clientes WHERE id = ?";
+                String SQL = "DELETE FROM Bitacoras WHERE id = ?";
 
                 PreparedStatement sentencia = conexion.prepareStatement(SQL);
 

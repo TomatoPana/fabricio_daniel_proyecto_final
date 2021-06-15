@@ -31,27 +31,27 @@ public class Distribuidores {
         this.id = id;
     }
 
-    public String gettelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void settelefono(String telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
